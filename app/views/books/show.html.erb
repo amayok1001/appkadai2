@@ -1,0 +1,22 @@
+<%= render '/books/list', { book: @book, user: @user, new: @new } %>
+
+<h2> Book detail</h2>
+<table>
+        <tr class="booksline">
+        <th></th>
+        <th></th>
+        <th></th>
+        </tr>
+        <tr>
+			<td><%= attachment_image_tag @user, :profile_image, :size =>"40x40", format:'jpeg', class: "pull-left profile-img", fallback: "no_image.png" %><br>
+                <%= link_to user_path(@user) do %>
+                <%= @user.name %>
+                <% end %></td>
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+            <% if @user.id == current_user.id %>
+            <td><%= link_to "Edit", edit_book_path(@book), class: "edit_book_#{@book.id} btn btn-success" %></td>
+            <td><%= link_to "Destroy", book_path(@book), method: :delete , class: "destroy_book_#{@book.id} btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+        </tr>
+</table>

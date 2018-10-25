@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+      <div class="row">
+      <div class="col-xs-12">
+        <span class="h_title">Bookers</span>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="button">
+                <%= link_to root_path, class: 'home btn-link' do %>
+                  <i class="glyphicon glyphicon-home" aria-hidden="true"></i>
+                  Home
+                <% end %>
+              </li>
+
+            <% if user_signed_in? %>
+              <li class="button">
+                <%= link_to users_path, class: 'users btn-link' do %>
+                  <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+                  Users
+                <% end %>
+              </li>
+              <li class="button">
+                <%= link_to books_path, class: 'books btn-link' do %>
+                  <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+                  Books
+                <% end %>
+              </li>
+              <li class="button">
+                <%= link_to destroy_user_session_path, method: :delete, class: 'logout btn-link' do %>
+                  <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+                  Log out
+                <% end %>
+              </li>
+
+            <% else %>
+              <li class="button">
+                <%= link_to about_path, class: 'about btn-link' do %>
+                  <i class="glyphicon glyphicon-link" aria-hidden="true"></i>
+                  About
+                <% end %>
+              </li>
+              <li class="button">
+                <%= link_to new_user_registration_path, class: 'sign_up btn-link' do %>
+                  <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+                  Sign up
+                <% end %>
+              </li>
+              <li class="button">
+                <%= link_to new_user_session_path, class: 'sign_in btn-link' do %>
+                  <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>
+                  Sign in
+                <% end %>
+              </li>
+
+
+            <% end %>
+          </ul>
+      </div>
+      </div>
+      </div>
+      </header>
+
+    <%= yield %>
+  </body>
+</html>

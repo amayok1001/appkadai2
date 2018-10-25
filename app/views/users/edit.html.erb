@@ -1,0 +1,28 @@
+<div class="container">
+<!-- Userinfo -->
+    	<div class="row">
+			<div class="col-xs-3">
+				<h2> User info </h2>
+
+					<%= form_for(@user) do |f| %>
+						<% if @user.errors.any? %>
+							<%= @user.errors.count %>件のエラーが発生しました
+							<% @user.errors.full_messages.each do |message| %>
+							<%= message %>
+                		<% end %>
+            		<% end %>
+						<h5> Name </h5>
+							<%= f.text_field :name, class: "name" %>
+						<h5> Image </h5>
+							<div class="user-edit-image">
+        				<%= attachment_image_tag @user, :profile_image, :size =>"80x80", class: "img-circle pull-left profile-thumb user_image", fallback: "no_image.png" %>
+    					</div>
+   						 <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+						<h5> Introduction </h5>
+						<%= f.text_area :intro, class:"introduction" %>
+						<br>
+        		<%= f.submit %>
+    			<% end %>
+			</div>
+			</div>
+</div>

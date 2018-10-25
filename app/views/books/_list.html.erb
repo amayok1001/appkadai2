@@ -1,0 +1,53 @@
+
+<div class="container">
+
+<div class="flash">
+    <% if flash[:notice] %>
+        <div class="flash">
+            <%= flash[:notice] %>
+        </div>
+        <% end %>
+</div>
+
+<!-- Userinfo -->
+    	<div class="row">
+			<div class="col-xs-3">
+				<h2> User info </h2>
+				<%= attachment_image_tag user, :profile_image, :size =>"80x80", format:'jpeg', class: "pull-left profile-img", fallback: "no_image.png" %>
+				
+				<table>
+					<tr class="userinfo">
+						<th>name</th>
+						<th><%= user.name %></th>
+					</tr>
+					<tr class="userinfo">
+						<th>intorduction</th>
+						<th><%= user.intro %></th>
+					</tr>
+				</table>
+				<% if user == current_user %>
+				<%= link_to edit_user_path(user), class: "edit_user_#{user.id} btn btn-default" do %>
+				<i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+				<% end %>
+                <% end %>
+				</button>
+		
+
+<!-- New Bookフォーム -->
+<h2> New Book </h2>
+    <%= form_for(new) do |f| %>
+      <% if new.errors.any? %>
+        	<%= new.errors.count %>件のエラーが発生しました
+            <% new.errors.full_messages.each do |message| %>
+               <%= message %>
+          <% end %>
+      <% end %>
+        
+        <h5> Title </h5>
+        <%= f.text_field :title, class: "book_title" %>
+        <h5> Opinion </h5>
+        <%= f.text_area :body, class: "book_body" %>
+        <br>
+        <%= f.submit "Create Book", class: "btn btn-primary" %>
+    <% end %>
+</div>

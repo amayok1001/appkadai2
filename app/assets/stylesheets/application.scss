@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ /* books/indexの写真投稿画像（あとで変更） */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+//  top page
+header {
+    background-color: black;
+}
+.h_title {
+    color: white;
+    font-size: 20px;
+}
+.top-b {
+    width: 400px;
+}
+
+// books/index
+table {
+    margin-top: 10px;
+}
+.userinfo {
+    border-top: 1px solid gray;
+}
+
+th {
+    width: 300px;
+    padding: 10px;
+}
+.btn-default {
+    width:100%;
+}
+.booksline {
+    border-bottom: 2px solid gray;
+}
+td {
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.book_title, .book_body {
+    width: 100%;
+}
+
+// Newbook
+.btn-primary {
+    width: 100%;
+}

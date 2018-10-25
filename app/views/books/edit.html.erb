@@ -1,0 +1,24 @@
+<div class="container">
+    <div class=row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <%= form_for(@book) do |f| %>
+            <% if @book.errors.any? %>
+                    <%= @book.errors.count %>件のエラーが発生しました
+                    <% @book.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+            <% end %>
+                
+                <h5> Title </h5>
+                <%= f.text_field :title, class: "book_title" %>
+                <h5> Opinion </h5>
+                <%= f.text_area :body, class: "book_body" %>
+                <br>
+                
+                <%= f.submit "Update Book", class: "btn btn-primary" %>
+            <% end %>
+            <%= link_to "Show", book_path(@book), class: "user_#{@book.id}" %>
+            <%= link_to "Back", books_path(@books), class: "back" %>
+    </div>
+    </div>
+</div>
