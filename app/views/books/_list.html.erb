@@ -14,7 +14,7 @@
 			<div class="col-xs-3">
 				<h2> User info </h2>
 				<%= attachment_image_tag user, :profile_image, :size =>"80x80", format:'jpeg', class: "pull-left profile-img", fallback: "no_image.png" %>
-				
+
 				<table>
 					<tr class="userinfo">
 						<th>name</th>
@@ -26,16 +26,15 @@
 					</tr>
 				</table>
 				<% if user == current_user %>
-				<li class="button btn">
-				<div class="btn-default">
+				<div class="col-xs-12">
+
 					<%= link_to edit_user_path(user), class: "edit_user_#{user.id}" do %>
 					<i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
 					<% end %>
 				</div>
-				</li>
+
                 <% end %>
-				</button>
-		
+
 
 <!-- New Bookフォーム -->
 <h2> New Book </h2>
