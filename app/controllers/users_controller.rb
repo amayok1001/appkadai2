@@ -11,8 +11,8 @@ before_action :correct_user, only: [:edit, :update]
     # マイページ
     def show
         @new = Book.new
-        @book = Book.find(params[:id])
-        @user=  User.find(params[:id])
+        @user =  User.find(params[:id])
+        @book = @user.books
         @books = @user.books
     end
 
