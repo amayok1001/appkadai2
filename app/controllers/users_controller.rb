@@ -13,7 +13,6 @@ before_action :correct_user, only: [:edit, :update]
         @new = Book.new
         @user =  User.find(params[:id])
         @book = @user.books
-        @books = @user.books
     end
 
     def create
