@@ -26,11 +26,9 @@
 					</tr>
 				</table>
 				<% if user == current_user %>
-				<div class="col-xs-12">
-					<%= link_to edit_user_path(user), class: "edit_user_#{user.id}" do %>
-					<i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
-					<% end %>
-				</div>
+				<%= link_to edit_user_path(user), class:"btn btn-default edit_user_#{current_user.id}" do %>
+						<i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+				<% end %>
 
                 <% end %>
 
