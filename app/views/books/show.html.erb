@@ -1,4 +1,4 @@
-<%= render '/books/list', { book: @book, user: @user, new: @new } %>
+<%= render '/books/list', { book: @book, user: @user} %>
 
 <h2> Book detail</h2>
 <table>
@@ -12,11 +12,11 @@
                 <%= link_to user_path(@user) do %>
                 <%= @user.name %>
                 <% end %></td>
-            <td><%= @book.title %></td>
-            <td><%= @book.body %></td>
+            <td><%= @bookf.title %></td>
+            <td><%= @bookf.body %></td>
             <% if @user.id == current_user.id %>
-            <td><%= link_to "Edit", edit_book_path(@book), class: "edit_book_#{@book.id} btn btn-success" %></td>
-            <td><%= link_to "Destroy", book_path(@book), method: :delete , class: "destroy_book_#{@book.id} btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to "Edit", edit_book_path(@bookf), class: "edit_book_#{@bookf.id} btn btn-success" %></td>
+            <td><%= link_to "Destroy", book_path(@bookf), method: :delete , class: "destroy_book_#{@bookf.id} btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
             <% end %>
         </tr>
 </table>

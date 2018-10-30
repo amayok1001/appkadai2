@@ -4,27 +4,14 @@ before_action :correct_user, only: [:edit, :update]
 
     def index
         @users = User.all
-        @new = Book.new
+        @book = Book.new
         @user = current_user
     end
 
     # マイページ
     def show
-        @new = Book.new
+        @book = Book.new
         @user =  User.find(params[:id])
-        @book = @user.books
-    end
-
-    def create
-        @new = Book.new(book_params)
-        @users = User.all
-        @user = current_user
-        if @new.save
-            flash[:notice] = "Book was successfully created."
-            redirect_to book_path(@book)
-        else
-            render :index
-        end
     end
 
     def edit
@@ -34,6 +21,7 @@ before_action :correct_user, only: [:edit, :update]
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
+            flash[:notice] = "User was successfully edit."
             redirect_to user_path(@user)
         else
             render :edit

@@ -37,10 +37,10 @@
 
 <!-- New Bookフォーム -->
 <h2> New Book </h2>
-    <%= form_for(new) do |f| %>
-      <% if new.errors.any? %>
-        	<%= new.errors.count %>件のエラーが発生しました
-            <% new.errors.full_messages.each do |message| %>
+    <%= form_for(book) do |f| %>
+      <% if book.errors.any? %>
+        	<%= book.errors.count %>件のエラーが発生しました
+            <% book.errors.full_messages.each do |message| %>
                <%= message %>
           <% end %>
       <% end %>

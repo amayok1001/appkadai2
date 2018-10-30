@@ -12,25 +12,25 @@ before_action :correct_user, only: [:edit, :update]
         # 投稿全件取得
         @books = Book.all
         # 新規投稿のための空のインスタンス作成
-        @new = Book.new
+        @book = Book.new
         @user = current_user
     end
 
     def show
-        @book = Book.find(params[:id])
-        @user = @book.user
-        @new = Book.new
+        @bookf = Book.find(params[:id])
+        @user = @bookf.user
+        @book = Book.new
     end
 
     def create
-        @new = Book.new(book_params)
-        @new.user_id = current_user.id
+        @book = Book.new(book_params)
+        @book.user_id = current_user.id
         @user = current_user
-        @books = Book.all        
-        if @new.save
+        if @book.save
             flash[:notice] = "Book was successfully created."
             redirect_to book_path(@book)
         else
+            @books = Book.all
             render :index
         end
     end
