@@ -16,9 +16,15 @@ before_action :correct_user, only: [:edit, :update]
     end
 
     def create
-        @book = Book.new(book_params)
-        @book.save
-        redirect_to book_path(@user)
+        @new = Book.new(book_params)
+        @users = User.all
+        @user = current_user
+        if @new.save
+            flash[:notice] = "Book was successfully created."
+            redirect_to book_path(@book)
+        else
+            render :index
+        end
     end
 
     def edit
@@ -27,9 +33,11 @@ before_action :correct_user, only: [:edit, :update]
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to user_path(@user)
-
+        if @user.update(user_params)
+            redirect_to user_path(@user)
+        else
+            render :edit
+        end
     end
 
 

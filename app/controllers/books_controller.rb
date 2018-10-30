@@ -23,13 +23,15 @@ before_action :correct_user, only: [:edit, :update]
     end
 
     def create
-        @book = Book.new(book_params)
-        @book.user_id = current_user.id
-        if @book.save
+        @new = Book.new(book_params)
+        @new.user_id = current_user.id
+        @user = current_user
+        @books = Book.all        
+        if @new.save
             flash[:notice] = "Book was successfully created."
             redirect_to book_path(@book)
         else
-            render :new
+            render :index
         end
     end
 

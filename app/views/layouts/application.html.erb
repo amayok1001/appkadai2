@@ -17,14 +17,14 @@
       <div class="col-xs-12">
         <span class="h_title">Bookers</span>
           <ul class="nav navbar-nav navbar-right">
+
+            <% if user_signed_in? %>
               <li>
-                <%= link_to root_path, class: "home" do %>
+                <%= link_to user_path(current_user), class: "home" do %>
                   <i class="glyphicon glyphicon-home" aria-hidden="true"></i>
                   Home
                 <% end %>
               </li>
-            
-            <% if user_signed_in? %>
               <li>
                 <%= link_to users_path, class: "users" do %>
                   <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
@@ -45,6 +45,12 @@
               </li>
 
             <% else %>
+              <li>
+                <%= link_to root_path, class: "home" do %>
+                  <i class="glyphicon glyphicon-home" aria-hidden="true"></i>
+                  Home
+                <% end %>
+              </li>
               <li>
                 <%= link_to about_path, class: "about" do %>
                   <i class="glyphicon glyphicon-link" aria-hidden="true"></i>
